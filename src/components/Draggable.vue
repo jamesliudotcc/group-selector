@@ -2,8 +2,22 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <main class="parent">
-      <div class="div0">0</div>
-      <div class="div1">1</div>
+      <div v-for="group in groups" class="{`div${group}`}" :key="`group-${group}`">
+        <h4>{{group + 1}}</h4>
+        <ul>
+          <draggable class="list-group" :list="draggable" group="people">
+            <li v-for="person in group0" :key="person">{{person}}</li>
+          </draggable>
+        </ul>
+      </div>
+      <!-- <div class="div1">
+        <h4>1</h4>
+        <ul>
+          <draggable class="list-group" :list="draggable" group="people">
+            <li v-for="person in group1" :key="person">{{person}}</li>
+          </draggable>
+        </ul>
+      </div>-->
       <div class="unselected">
         <h4>Unselected</h4>
         <ul>
@@ -19,10 +33,10 @@
 <script>
 import draggable from 'vuedraggable';
 export default {
+  name: 'Draggable',
   components: {
     draggable,
   },
-  name: 'Draggable',
   props: {
     msg: String,
   },
