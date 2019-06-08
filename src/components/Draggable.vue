@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>Group Selector</h1>
     <main class="parent">
-      <div v-for="group in groups" class="{`div${group}`}" :key="`group-${group}`">
+      <div v-for="group in groups" class="{`div${group}`} each" :key="`group-${group}`">
         <h4>{{group + 1}}</h4>
         <ul>
           <draggable class="list-group" :list="draggable" group="people">
@@ -42,7 +42,37 @@ export default {
   },
   data: () => {
     return {
-      dataUnselected: ['Keil', 'Jacob', 'Sophia', 'Meghan', 'Arron'],
+      dataUnselected: [
+        'Aaron',
+        'Adam',
+        'Andrew',
+        'Aoki',
+        'Christian',
+        'Christina',
+        'Daniel',
+        'David',
+        'Devin',
+        'Edward',
+        'Everett',
+        'Felix',
+        'Georgia',
+        'Helan',
+        'Heon',
+        'Iman',
+        'Jacob',
+        'Jessica',
+        'Joe',
+        'Keil',
+        'Kim',
+        'Lawrence',
+        'Maryanne',
+        'Monali',
+        'Monica',
+        'Nina',
+        'Scott',
+        'Sophia',
+        'Weiming',
+      ],
       group0: [],
       group1: [],
       groups: (() => {
@@ -63,8 +93,13 @@ li {
   border: 1px solid black;
   margin: 2px;
 }
+ul {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border: 1px solid blue;
+  list-style-position: inside;
+}
 div {
-  border: 1px solid salmon;
   margin: 0.1em;
 }
 .parent {
