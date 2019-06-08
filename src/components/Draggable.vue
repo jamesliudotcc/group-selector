@@ -10,16 +10,14 @@
           </draggable>
         </ul>
       </div>
-      <!-- <div class="div1">
-        <h4>1</h4>
-        <ul>
-          <draggable class="list-group" :list="draggable" group="people">
-            <li v-for="person in group1" :key="person">{{person}}</li>
-          </draggable>
-        </ul>
-      </div>-->
+
       <div class="unselected">
         <h4>Unselected</h4>
+        <p>Names, separated by commas</p>
+        <form action="GET">
+          <input type="text" v-model="namesInput">
+          <button type="submit" @click.prevent="addToUnselected">Add names</button>
+        </form>
         <ul>
           <draggable class="list-group" :list="dataUnselected" group="people">
             <li v-for="(person, index) in dataUnselected" :key="`person-${index}`">{{person}}</li>
@@ -42,41 +40,8 @@ export default {
   },
   data: () => {
     return {
-      dataUnselected: [
-        'Aaron',
-        'Adam',
-        'Andrew',
-        'Aoki',
-        'Cameron',
-        'Christian',
-        'Christina',
-        'Daniel',
-        'David',
-        'Devin',
-        'Edward',
-        'Everett',
-        'Felix',
-        'Georgia',
-        'Helan',
-        'Heon',
-        'Iman',
-        'Jacob',
-        'Jessica',
-        'Joe',
-        'Keil',
-        'Kim',
-        'Lawrence',
-        'Maryanne',
-        'Meghan',
-        'Monali',
-        'Monica',
-        'Nina',
-        'Scott',
-        'Shawn',
-        'Sophia',
-        'Sveta',
-        'Weiming',
-      ],
+      namesInput: '',
+      dataUnselected: [],
       groups: (() => {
         let arr = [];
         for (let i = 0; i < 12; i++) {
@@ -85,6 +50,13 @@ export default {
         return arr;
       })(),
     };
+  },
+  methods: {
+    addToUnselected: function() {
+      const newNames = this.namesInput.split(',').map(name => name.trim());
+      this.dataUnselected = this.dataUnselected.concat(newNames);
+      this.namesInput = '';
+    },
   },
 };
 </script>
