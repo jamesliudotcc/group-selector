@@ -54,7 +54,7 @@ export default {
   methods: {
     addToUnselected: function() {
       const newNames = this.namesInput.split(',').map(name => name.trim());
-      this.dataUnselected = this.dataUnselected.concat(newNames);
+      this.dataUnselected = [...this.dataUnselected, ...newNames];
       this.namesInput = '';
     },
   },
