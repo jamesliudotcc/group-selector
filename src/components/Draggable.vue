@@ -2,12 +2,14 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <main class="parent">
-      <div class="div0">Hi</div>
-      <div class="div1">Hi1</div>
+      <div class="div0">0</div>
+      <div class="div1">1</div>
       <div class="unselected">
         <h4>Unselected</h4>
         <ul>
-          <li v-for="person in dataUnselected" :key="person">{{person}}</li>
+          <draggable class="list-group" :list="draggable" group="people">
+            <li v-for="person in dataUnselected" :key="person">{{person}}</li>
+          </draggable>
         </ul>
       </div>
     </main>
@@ -17,6 +19,9 @@
 <script>
 import draggable from 'vuedraggable';
 export default {
+  components: {
+    draggable,
+  },
   name: 'Draggable',
   props: {
     msg: String,
@@ -24,6 +29,8 @@ export default {
   data: () => {
     return {
       dataUnselected: ['Keil', 'Jacob', 'Sophia', 'Meghan', 'Arron'],
+      group0: [],
+      group1: [],
       groups: (() => {
         let arr = [];
         for (let i = 0; i < 12; i++) {
@@ -38,6 +45,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+li {
+  border: 1px solid black;
+  margin: 2px;
+}
 div {
   border: 1px solid salmon;
   margin: 0.1em;
