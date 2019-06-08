@@ -35,9 +35,6 @@ export default {
   components: {
     draggable,
   },
-  props: {
-    msg: String,
-  },
   data: () => {
     return {
       namesInput: '',

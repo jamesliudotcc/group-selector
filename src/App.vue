@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <draggable msg="Welcome to Your Vue.js App"/>
+    <draggable/>
   </div>
 </template>
 
