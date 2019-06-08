@@ -66,6 +66,7 @@ export default {
         'Kim',
         'Lawrence',
         'Maryanne',
+        'Meghan',
         'Monali',
         'Monica',
         'Nina',
