@@ -3,10 +3,10 @@
     <h1>Group Selector</h1>
     <main class="parent">
       <div v-for="group in groups" class="{`div${group}`} each" :key="`group-${group}`">
-        <h4>{{group + 1}}</h4>
+        <h4>{{groups.indexOf(group) + 1}}</h4>
         <ul>
-          <draggable class="list-group" :list="draggable" group="people">
-            <li v-for="person in group0" :key="person">{{person}}</li>
+          <draggable class="list-group" :list="group" group="people">
+            <li v-for="(person, index) in group" :key="`person-${index}`">{{person}}</li>
           </draggable>
         </ul>
       </div>
@@ -21,8 +21,8 @@
       <div class="unselected">
         <h4>Unselected</h4>
         <ul>
-          <draggable class="list-group" :list="draggable" group="people">
-            <li v-for="person in dataUnselected" :key="person">{{person}}</li>
+          <draggable class="list-group" :list="dataUnselected" group="people">
+            <li v-for="(person, index) in dataUnselected" :key="`person-${index}`">{{person}}</li>
           </draggable>
         </ul>
       </div>
@@ -77,12 +77,10 @@ export default {
         'Sveta',
         'Weiming',
       ],
-      group0: [],
-      group1: [],
       groups: (() => {
         let arr = [];
         for (let i = 0; i < 12; i++) {
-          arr.push(i);
+          arr.push([]);
         }
         return arr;
       })(),
