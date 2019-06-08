@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>Group Selector</h1>
     <main class="parent">
-      <div v-for="group in groups" class="{`div${group}`} each" :key="`group-${group}`">
+      <div v-for="(group, index) in groups" class="{`div${group}`} each" :key="`group-${index}`">
         <h4>{{groups.indexOf(group) + 1}}</h4>
         <ul>
           <draggable class="list-group" :list="group" group="people">
